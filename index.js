@@ -1,6 +1,13 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
+
+//midllewares
+
+app.use(bodyParser.json());
+
+//middlewares
 
 const users = [
     {
@@ -235,12 +242,25 @@ const users = [
     }
   ];
 
+const usersData = [];
+
 app.get("/", (req, res) => {
     res.status(200).send("HElloo MoThaFucka... dis shit is working!");
 });
 
 app.get("/users", (req, res) => {
     res.status(200).send(users);
+});
+
+app.post("/user", (req, res) => {
+  console.log(req.body);
+  const user = req.body;
+  usersData.push(user);
+  res.status(200).send("we received client details");
+});
+
+app.get("/user", (req,res) => {
+  res.send(usersData);
 });
 
 app.listen(3000, (req, res) => {
