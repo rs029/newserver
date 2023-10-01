@@ -295,6 +295,24 @@ app.get("/filtusers", (req, res) => {
 });
 
 //Query Parameters
+
+//DELETE
+
+app.delete("/delusers/:id", (req, res) => {
+  const itemID = req.params.id;
+  console.log(itemID);
+  const index = users.findIndex((item) => item.id === parseInt(req.params.id));
+  console.log(index);
+  if(index >= 0){
+    const delItem = users.splice(index, 1);
+    res.send(delItem);
+  }else{
+    res.send("Error.. Item not found!")
+  }
+});
+
+//DELETE
+
 app.listen(3000, (req, res) => {
     console.log("the server is running up at http://localhost:3000");
 });
