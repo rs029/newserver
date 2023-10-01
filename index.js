@@ -248,10 +248,17 @@ app.get("/", (req, res) => {
     res.status(200).send("HElloo MoThaFucka... dis shit is working!");
 });
 
+
+//GET
+
 app.get("/users", (req, res) => {
     res.status(200).send(users);
 });
 
+//GET
+
+
+//POST
 app.post("/user", (req, res) => {
   console.log(req.body);
   const user = req.body;
@@ -263,6 +270,31 @@ app.get("/user", (req,res) => {
   res.send(usersData);
 });
 
+//POST
+
+
+//Path Parameters
+
+app.get("/users/:id", (req, res) => {
+  const user = users.find((item) => item.id === parseInt(req.params.id));
+  res.send(user);
+});
+
+//Path Parameters
+
+//Query Parameters
+
+app.get("/filtusers", (req, res) => {
+  console.log(req.query);
+  if(req.query.city){
+    const filterUsers = users.filter((item) => item.address.city === req.query.city);
+    res.send(filterUsers);
+  }else{
+    res.send("we can't find the city you asked.");
+  }
+});
+
+//Query Parameters
 app.listen(3000, (req, res) => {
     console.log("the server is running up at http://localhost:3000");
 });
