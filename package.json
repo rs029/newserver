@@ -1,0 +1,23 @@
+{
+  "name": "newserver",
+  "version": "1.0.0",
+  "description": "again making server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learning",
+    "hot",
+    "to",
+    "make",
+    "a",
+    "server",
+    "..",
+    "building",
+    "a",
+    "new"
+  ],
+  "author": "rs029",
+  "license": "ISC"
+}
