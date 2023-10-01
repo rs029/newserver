@@ -313,6 +313,37 @@ app.delete("/delusers/:id", (req, res) => {
 
 //DELETE
 
+//PUT & PATCH
+
+app.put("/putusers/:id", (req, res) => {
+  const index = users.findIndex((item) => item.id === parseInt(req.params.id));
+  if(index >= 0){
+    users[index] = req.body;
+    res.send(users[index]);
+    console.log(users);
+  }else{
+    users.push(req.body);
+    console.log(users);
+    res.send("this source is new , we added.")
+  }
+});
+
+app.patch("/patchusers/:id", (req, res) => {
+  const user = users.find((item) => item.id === parseInt(req.params.id));
+  if(user){
+
+    if(req.body.name) user.name = req.body.name;
+    if(req.body.username) user.username = req.body.username;
+    if(req.body.email) user.email = req.body.email;
+    if(req.body.address) user.address = req.body.address;
+    res.status(200).send(user);
+  }else{
+    res.status(404).send("Not HERe BudDY!");
+  }
+});
+
+//PUT & PATCH
+
 app.listen(3000, (req, res) => {
     console.log("the server is running up at http://localhost:3000");
 });
